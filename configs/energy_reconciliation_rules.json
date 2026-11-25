@@ -1,0 +1,16 @@
+{
+  "version": "1.0.0",
+  "methodology": "energy_balance_rules_v1",
+  "description": "Initial investigation thresholds only. Calibrate them with DisCo field data before pilot or production use.",
+  "interval_minutes": 15,
+  "expected_technical_loss_rate": 0.1,
+  "minimum_upstream_energy_kwh": 10.0,
+  "minimum_meter_coverage": 0.95,
+  "minimum_unexplained_energy_kwh": 5.0,
+  "minimum_unexplained_energy_ratio": 0.15,
+  "severity_thresholds": {
+    "critical": 0.4,
+    "high": 0.25,
+    "medium": 0.15
+  }
+}

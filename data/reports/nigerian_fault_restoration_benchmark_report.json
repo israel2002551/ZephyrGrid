@@ -1,0 +1,109 @@
+{
+  "generated_at_utc": "2026-11-25T19:35:00+00:00",
+  "experiment_id": "nigerian_fault_restoration_benchmark_v1",
+  "purpose": "Chronological decision-support benchmark only; not outage control or restoration authority.",
+  "source": "data/processed/nigerian_33kv_fault_events.csv",
+  "model_artifact": "models/nigerian_fault_restoration_benchmark.joblib",
+  "split": {
+    "method": "chronological 80/20 holdout",
+    "train_rows": 4764,
+    "test_rows": 1191,
+    "train_last_reported_at": "2023-09-18T16:54:00",
+    "test_first_reported_at": "2023-09-18T17:50:00"
+  },
+  "features": {
+    "columns": [
+      "month",
+      "day_of_week",
+      "hour",
+      "is_rainy",
+      "fault_cause_count",
+      "cause__AMINAL",
+      "cause__ARRESTER",
+      "cause__Breaker & CT Fault",
+      "cause__CABLE FAULT",
+      "cause__DAMAGE CROSS ARM",
+      "cause__DAMAGE INSULATOR/ISOLATOR",
+      "cause__DAMAGE POLE",
+      "cause__DETACHED LINE",
+      "cause__DOWN DROPPER/UPRISE",
+      "cause__EQ Burnt, Explosion or Arcing",
+      "cause__FURTHER PATROL",
+      "cause__HT JUMPER CUT",
+      "cause__Line Trip with No Fault Found",
+      "cause__MAINLINE(Cut/Twist)",
+      "cause__Reclose Attempt after E/F",
+      "cause__Ruptured HT Fuse",
+      "cause__Tree & Vegetation Fouling"
+    ],
+    "included": "initially reported fault causes, timestamp-derived calendar fields, and season; records without a recorded cause use an all-zero cause vector",
+    "excluded": "restoration time/date, MTTR target, and load-loss category to avoid direct outcome leakage"
+  },
+  "metrics": {
+    "accuracy": 0.6616288832913518,
+    "balanced_accuracy": 0.6626360148704712,
+    "macro_f1": 0.6414835061241527,
+    "weighted_f1": 0.6714886489546805,
+    "classification_report": {
+      "Acceptable MTTR": {
+        "precision": 0.4986449864498645,
+        "recall": 0.7022900763358778,
+        "f1-score": 0.5832012678288431,
+        "support": 262.0
+      },
+      "Optimal MTTR": {
+        "precision": 0.5612535612535613,
+        "recall": 0.6194968553459119,
+        "f1-score": 0.5889387144992526,
+        "support": 318.0
+      },
+      "Suboptimal MTTR": {
+        "precision": 0.8641188959660298,
+        "recall": 0.6661211129296236,
+        "f1-score": 0.7523105360443623,
+        "support": 611.0
+      },
+      "accuracy": 0.6616288832913518,
+      "macro avg": {
+        "precision": 0.6413391478898185,
+        "recall": 0.6626360148704712,
+        "f1-score": 0.6414835061241527,
+        "support": 1191.0
+      },
+      "weighted avg": {
+        "precision": 0.7028549658805552,
+        "recall": 0.6616288832913518,
+        "f1-score": 0.6714886489546805,
+        "support": 1191.0
+      }
+    },
+    "confusion_matrix_labels": [
+      "Acceptable MTTR",
+      "Optimal MTTR",
+      "Suboptimal MTTR"
+    ],
+    "confusion_matrix": [
+      [
+        184,
+        51,
+        27
+      ],
+      [
+        84,
+        197,
+        37
+      ],
+      [
+        101,
+        103,
+        407
+      ]
+    ]
+  },
+  "limitations": [
+    "The public source has no feeder, asset, crew, weather, switching, or documented timezone data.",
+    "Some records have no listed fault cause, so the benchmark represents them with no active cause indicator.",
+    "The MTTR category is derived from historical restoration outcome and does not establish causality.",
+    "Predictions may support investigation and resource planning only; authorised personnel and protection procedures govern restoration decisions."
+  ]
+}

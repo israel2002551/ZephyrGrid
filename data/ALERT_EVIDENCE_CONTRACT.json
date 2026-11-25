@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ZephyrGrid investigation alert evidence",
+  "description": "An alert represents evidence for human investigation, not a finding of theft or authority to control electrical equipment.",
+  "type": "object",
+  "required": [
+    "alert_id",
+    "alert_type",
+    "alert_state",
+    "severity",
+    "asset_id",
+    "period_start_utc",
+    "period_end_utc",
+    "methodology",
+    "confidence",
+    "evidence"
+  ],
+  "properties": {
+    "alert_id": {"type": "string", "description": "Stable identifier derived from alert type, asset, period, and methodology."},
+    "alert_type": {"const": "energy_discrepancy"},
+    "alert_state": {"const": "investigation_required"},
+    "severity": {"enum": ["medium", "high", "critical"]},
+    "asset_id": {"type": "string"},
+    "feeder_id": {"type": ["string", "null"]},
+    "period_start_utc": {"type": "string", "format": "date-time"},
+    "period_end_utc": {"type": "string", "format": "date-time"},
+    "methodology": {"const": "energy_balance_rules_v1"},
+    "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+    "evidence": {
+      "type": "object",
+      "required": [
+        "upstream_energy_kwh",
+        "downstream_energy_kwh",
+        "expected_technical_loss_kwh",
+        "unexplained_energy_kwh",
+        "unexplained_energy_ratio",
+        "expected_meter_count",
+        "observed_meter_count",
+        "meter_coverage",
+        "quality_status"
+      ]
+    }
+  }
+}

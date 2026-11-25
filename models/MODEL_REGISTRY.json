@@ -1,0 +1,71 @@
+{
+  "generated_at_utc": "2026-11-25T19:38:40+00:00",
+  "production_policy": "No registered model is production-eligible until it has local field validation, approved governance, model monitoring, and a deployment review.",
+  "models": [
+    {
+      "experiment_id": "tdd2022_random_forest_benchmark_v1",
+      "display_name": "TDD2022 Random Forest theft-classification benchmark",
+      "status": "benchmark_only",
+      "operational_function": "Revenue Protection Intelligence",
+      "created_at_utc": "2026-11-25T18:52:43+00:00",
+      "purpose": "Pipeline benchmark only; not a field theft-detection model.",
+      "source": "data/raw/tdd2022/df.csv",
+      "artifact": "models/tdd2022_random_forest_benchmark.joblib",
+      "report": "data/reports/tdd2022_benchmark_report.json",
+      "metrics": {
+        "accuracy": 0.8224665792688909,
+        "balanced_accuracy": 0.7033778534324718,
+        "macro_f1": 0.6828585231074412,
+        "weighted_f1": 0.807442416297179
+      },
+      "limitations": [
+        "Theft classes are synthetic transformations, not verified theft incidents.",
+        "The random benchmark split may not represent future, unseen customers or a Nigerian DisCo distribution network.",
+        "Do not use this model for enforcement, customer action, or production alerting.",
+        "A local field-labelled dataset and topology-aware energy balance evidence are required for a production revenue-protection model."
+      ]
+    },
+    {
+      "experiment_id": "uci_isolation_forest_benchmark_v1",
+      "display_name": "UCI per-client Isolation Forest anomaly benchmark",
+      "status": "benchmark_only",
+      "operational_function": "Revenue Protection Intelligence",
+      "created_at_utc": "2026-11-25T18:56:16+00:00",
+      "purpose": "Unsupervised consumption anomaly benchmark only; not theft detection.",
+      "source": "data/raw/uci_load_diagrams/electricityloaddiagrams20112014.zip",
+      "artifact": "models/uci_isolation_forest_benchmark.joblib",
+      "report": "data/reports/uci_anomaly_benchmark_report.json",
+      "metrics": {
+        "anomaly_rate": 0.01026027397260274
+      },
+      "limitations": [
+        "UCI records are not Nigerian DisCo data and include no verified theft labels.",
+        "The model is fitted retrospectively over each client's full history; it is not a prospective field evaluation.",
+        "An anomaly is an investigation signal, never proof of theft."
+      ]
+    },
+    {
+      "experiment_id": "nigerian_fault_restoration_benchmark_v1",
+      "display_name": "Nigerian 33 kV fault-restoration benchmark",
+      "status": "benchmark_only",
+      "operational_function": "Network Operations / Asset Management Intelligence",
+      "created_at_utc": "2026-11-25T19:35:00+00:00",
+      "purpose": "Chronological decision-support benchmark only; not outage control or restoration authority.",
+      "source": "data/processed/nigerian_33kv_fault_events.csv",
+      "artifact": "models/nigerian_fault_restoration_benchmark.joblib",
+      "report": "data/reports/nigerian_fault_restoration_benchmark_report.json",
+      "metrics": {
+        "accuracy": 0.6616288832913518,
+        "balanced_accuracy": 0.6626360148704712,
+        "macro_f1": 0.6414835061241527,
+        "weighted_f1": 0.6714886489546805
+      },
+      "limitations": [
+        "The public source has no feeder, asset, crew, weather, switching, or documented timezone data.",
+        "Some records have no listed fault cause, so the benchmark represents them with no active cause indicator.",
+        "The MTTR category is derived from historical restoration outcome and does not establish causality.",
+        "Predictions may support investigation and resource planning only; authorised personnel and protection procedures govern restoration decisions."
+      ]
+    }
+  ]
+}

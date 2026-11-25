@@ -1,0 +1,7 @@
+{
+  "version": "1.0.0",
+  "methodology": "electrical_condition_rules_v1",
+  "description": "Asset-specific voltage and current limits are required. Alerts are operational investigation signals only and never a switching command.",
+  "voltage_critical_deviation_pu": 0.15,
+  "current_critical_ratio": 1.2
+}

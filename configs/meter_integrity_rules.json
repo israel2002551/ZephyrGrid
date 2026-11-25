@@ -1,0 +1,13 @@
+{
+  "version": "1.0.0",
+  "methodology": "meter_integrity_rules_v1",
+  "description": "Initial investigation thresholds only. Calibrate against compatible meter telemetry and verified field findings before a pilot.",
+  "direct_tamper_event_types": ["meter_tamper", "terminal_cover_open", "magnetic_tamper", "neutral_disturbance"],
+  "direct_tamper_severity": "high",
+  "reset_window_minutes": 1440,
+  "minimum_resets_per_window": 3,
+  "authentication_window_minutes": 30,
+  "minimum_authentication_failures_per_window": 3,
+  "expected_reading_interval_minutes": 15,
+  "minimum_missing_reading_gap_minutes": 60
+}

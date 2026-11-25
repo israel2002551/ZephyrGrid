@@ -1,0 +1,96 @@
+{
+  "generated_at_utc": "2026-11-25T18:56:16+00:00",
+  "experiment_id": "uci_isolation_forest_benchmark_v1",
+  "purpose": "Unsupervised consumption anomaly benchmark only; not theft detection.",
+  "source": "data/raw/uci_load_diagrams/electricityloaddiagrams20112014.zip",
+  "output_profiles": "data/processed/uci_daily_profiles_benchmark.csv",
+  "model_artifact": "models/uci_isolation_forest_benchmark.joblib",
+  "data": {
+    "client_count": 50,
+    "daily_profile_count": 73000,
+    "date_range": {
+      "from": "2011-01-02",
+      "to": "2014-12-31"
+    },
+    "feature_columns": [
+      "daily_energy_kwh",
+      "peak_kw",
+      "mean_kw",
+      "load_factor",
+      "zero_interval_ratio",
+      "overnight_energy_share"
+    ],
+    "input_quality": {
+      "clients": 50,
+      "invalid_numeric_values": 0,
+      "incomplete_client_days_skipped": 100
+    }
+  },
+  "model": {
+    "algorithm": "IsolationForest per client",
+    "trees_per_client": 100,
+    "contamination": 0.01,
+    "random_seed": 20261125
+  },
+  "results": {
+    "anomalies_flagged": 749,
+    "anomaly_rate": 0.01026027397260274,
+    "anomalies_by_client": {
+      "MT_001": 15,
+      "MT_002": 15,
+      "MT_003": 15,
+      "MT_004": 15,
+      "MT_005": 15,
+      "MT_006": 15,
+      "MT_007": 15,
+      "MT_008": 15,
+      "MT_009": 15,
+      "MT_010": 15,
+      "MT_011": 15,
+      "MT_012": 15,
+      "MT_013": 15,
+      "MT_014": 15,
+      "MT_015": 15,
+      "MT_016": 15,
+      "MT_017": 15,
+      "MT_018": 15,
+      "MT_019": 15,
+      "MT_020": 15,
+      "MT_021": 15,
+      "MT_022": 15,
+      "MT_023": 14,
+      "MT_024": 15,
+      "MT_025": 15,
+      "MT_026": 15,
+      "MT_027": 15,
+      "MT_028": 15,
+      "MT_029": 15,
+      "MT_030": 15,
+      "MT_031": 15,
+      "MT_032": 15,
+      "MT_033": 15,
+      "MT_034": 15,
+      "MT_035": 15,
+      "MT_036": 15,
+      "MT_037": 15,
+      "MT_038": 15,
+      "MT_039": 15,
+      "MT_040": 15,
+      "MT_041": 15,
+      "MT_042": 15,
+      "MT_043": 15,
+      "MT_044": 15,
+      "MT_045": 15,
+      "MT_046": 15,
+      "MT_047": 15,
+      "MT_048": 15,
+      "MT_049": 15,
+      "MT_050": 15
+    }
+  },
+  "limitations": [
+    "UCI records are not Nigerian DisCo data and include no verified theft labels.",
+    "The model is fitted retrospectively over each client's full history; it is not a prospective field evaluation.",
+    "An anomaly is an investigation signal, never proof of theft."
+  ]
+}

@@ -1,0 +1,15 @@
+# Raw research downloads are 3.5+ GB and remain locally reproducible via data/SOURCES.md.
+data/raw/
+
+# Generated run outputs and model binaries are reproducible from tracked scripts and reports.
+data/outputs/
+data/processed/
+models/*.joblib
+
+# Python build artefacts.
+__pycache__/
+*.py[cod]
+
+# Editor and operating-system artefacts.
+.DS_Store
+Thumbs.db

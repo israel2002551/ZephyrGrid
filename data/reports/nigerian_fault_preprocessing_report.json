@@ -1,0 +1,50 @@
+{
+  "generated_at_utc": "2026-11-25T18:49:20+00:00",
+  "source": "data/raw/nigerian_33kv_faults/Fault Pattern Dataset with Timestamp.xlsx",
+  "output": "data/processed/nigerian_33kv_fault_events.csv",
+  "records_written": 5955,
+  "source_columns": [
+    "TIME REPORTED",
+    "DATE REPORTED",
+    "TIME RESTORED",
+    "DATE CLEARED",
+    "Ruptured HT Fuse",
+    "Tree & Vegetation Fouling",
+    "HT JUMPER CUT",
+    "DAMAGE CROSS ARM",
+    "DAMAGE POLE",
+    "DETACHED LINE",
+    "MAINLINE(Cut/Twist)",
+    "DAMAGE INSULATOR/ISOLATOR",
+    "Line Trip with No Fault Found",
+    "AMINAL",
+    "DOWN DROPPER/UPRISE",
+    "Reclose Attempt after E/F",
+    "ARRESTER",
+    "CABLE FAULT",
+    "FURTHER PATROL",
+    "Breaker & CT Fault",
+    "EQ Burnt, Explosion or Arcing",
+    "Minimum Losses",
+    "Moderate Losses",
+    "High Losses",
+    "Planned outage/ No Load Loss",
+    "Rainy",
+    "Dry",
+    "Optimal MTTR",
+    "Acceptable MTTR",
+    "Suboptimal MTTR"
+  ],
+  "quality": {
+    "missing_reported_timestamp": 0,
+    "missing_restored_timestamp": 2,
+    "multi_cause_events": 1103,
+    "all_rows_marked_suspect": true,
+    "reason": "The public dataset does not document timezone, feeder identifier, or asset identifier."
+  },
+  "transformations": [
+    "Excel serial dates and time fractions converted to timezone-unknown local ISO timestamps.",
+    "One-hot cause, loss, seasonal, and MTTR columns converted to semicolon-separated multi-label fields.",
+    "Raw workbook preserved unchanged; each output row retains the original Excel row number."
+  ]
+}

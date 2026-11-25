@@ -1,0 +1,232 @@
+{
+  "generated_at_utc": "2026-11-25T18:52:43+00:00",
+  "experiment_id": "tdd2022_random_forest_benchmark_v1",
+  "purpose": "Pipeline benchmark only; not a field theft-detection model.",
+  "source": "data/raw/tdd2022/df.csv",
+  "model_artifact": "models/tdd2022_random_forest_benchmark.joblib",
+  "data": {
+    "source_rows": 560655,
+    "training_rows": 120000,
+    "test_rows": 112131,
+    "dropped_identifier_columns": [
+      "0"
+    ],
+    "numeric_feature_columns": [
+      "Cooling:Electricity [kW](Hourly)",
+      "Electricity:Facility [kW](Hourly)",
+      "Fans:Electricity [kW](Hourly)",
+      "Gas:Facility [kW](Hourly)",
+      "Heating:Electricity [kW](Hourly)",
+      "Heating:Gas [kW](Hourly)",
+      "InteriorEquipment:Electricity [kW](Hourly)",
+      "InteriorEquipment:Gas [kW](Hourly)",
+      "InteriorLights:Electricity [kW](Hourly)",
+      "Water Heater:WaterSystems:Gas [kW](Hourly)"
+    ],
+    "categorical_feature_columns": [
+      "Class"
+    ],
+    "class_distribution_source": {
+      "Normal": 331824,
+      "Theft1": 51083,
+      "Theft2": 22973,
+      "Theft3": 44349,
+      "Theft4": 41460,
+      "Theft5": 33553,
+      "Theft6": 35413
+    },
+    "class_distribution_train": {
+      "Normal": 71022,
+      "Theft1": 10933,
+      "Theft2": 4917,
+      "Theft3": 9492,
+      "Theft4": 8874,
+      "Theft5": 7182,
+      "Theft6": 7580
+    },
+    "class_distribution_test": {
+      "Normal": 66365,
+      "Theft1": 10217,
+      "Theft2": 4595,
+      "Theft3": 8870,
+      "Theft4": 8292,
+      "Theft5": 6710,
+      "Theft6": 7082
+    }
+  },
+  "model": {
+    "algorithm": "RandomForestClassifier",
+    "parameters": {
+      "bootstrap": true,
+      "ccp_alpha": 0.0,
+      "class_weight": "balanced_subsample",
+      "criterion": "gini",
+      "max_depth": 20,
+      "max_features": "sqrt",
+      "max_leaf_nodes": null,
+      "max_samples": null,
+      "min_impurity_decrease": 0.0,
+      "min_samples_leaf": 5,
+      "min_samples_split": 2,
+      "min_weight_fraction_leaf": 0.0,
+      "monotonic_cst": null,
+      "n_estimators": 100,
+      "n_jobs": -1,
+      "oob_score": false,
+      "random_state": 20261125,
+      "verbose": 0,
+      "warm_start": false
+    },
+    "random_seed": 20261125
+  },
+  "metrics": {
+    "accuracy": 0.8224665792688909,
+    "balanced_accuracy": 0.7033778534324718,
+    "macro_f1": 0.6828585231074412,
+    "weighted_f1": 0.807442416297179,
+    "classification_report": {
+      "Normal": {
+        "precision": 0.9332124909736652,
+        "recall": 0.9541927220673547,
+        "f1-score": 0.9435859993145684,
+        "support": 66365.0
+      },
+      "Theft1": {
+        "precision": 0.5667289331672893,
+        "recall": 0.5345013213271997,
+        "f1-score": 0.5501435551302071,
+        "support": 10217.0
+      },
+      "Theft2": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 4595.0
+      },
+      "Theft3": {
+        "precision": 0.5016425355882711,
+        "recall": 0.4648252536640361,
+        "f1-score": 0.4825326233249459,
+        "support": 8870.0
+      },
+      "Theft4": {
+        "precision": 0.7253784339375817,
+        "recall": 0.9362035697057405,
+        "f1-score": 0.8174160261135095,
+        "support": 8292.0
+      },
+      "Theft5": {
+        "precision": 0.8589308996088657,
+        "recall": 0.9818181818181818,
+        "f1-score": 0.9162726008344924,
+        "support": 6710.0
+      },
+      "Theft6": {
+        "precision": 0.10689455388180764,
+        "recall": 0.05210392544478961,
+        "f1-score": 0.07005885703436492,
+        "support": 7082.0
+      },
+      "accuracy": 0.8224665792688909,
+      "macro avg": {
+        "precision": 0.6703982638796401,
+        "recall": 0.7033778534324718,
+        "f1-score": 0.6828585231074412,
+        "support": 112131.0
+      },
+      "weighted avg": {
+        "precision": 0.7964147051705801,
+        "recall": 0.8224665792688909,
+        "f1-score": 0.807442416297179,
+        "support": 112131.0
+      }
+    },
+    "confusion_matrix_labels": [
+      "Normal",
+      "Theft1",
+      "Theft2",
+      "Theft3",
+      "Theft4",
+      "Theft5",
+      "Theft6"
+    ],
+    "confusion_matrix": [
+      [
+        63325,
+        6,
+        0,
+        8,
+        10,
+        112,
+        2904
+      ],
+      [
+        86,
+        5461,
+        0,
+        3302,
+        1113,
+        180,
+        75
+      ],
+      [
+        0,
+        0,
+        4595,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        59,
+        3295,
+        0,
+        4123,
+        1119,
+        245,
+        29
+      ],
+      [
+        4,
+        230,
+        0,
+        246,
+        7763,
+        35,
+        14
+      ],
+      [
+        17,
+        9,
+        0,
+        18,
+        17,
+        6588,
+        61
+      ],
+      [
+        4366,
+        635,
+        0,
+        522,
+        680,
+        510,
+        369
+      ]
+    ]
+  },
+  "limitations": [
+    "Theft classes are synthetic transformations, not verified theft incidents.",
+    "The random benchmark split may not represent future, unseen customers or a Nigerian DisCo distribution network.",
+    "Do not use this model for enforcement, customer action, or production alerting.",
+    "A local field-labelled dataset and topology-aware energy balance evidence are required for a production revenue-protection model."
+  ],
+  "environment": {
+    "python": "3.13.2 (tags/v3.13.2:4f8bb39, Feb  4 2025, 15:23:48) [MSC v.1942 64 bit (AMD64)]",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "numpy": "2.3.1",
+    "pandas": "2.3.0",
+    "scikit_learn": "1.7.0"
+  }
+}
